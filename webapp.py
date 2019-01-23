@@ -14,8 +14,9 @@ app.secret_key=os.environ["SECRET_KEY"]; #This is an environment variable.
 
 @app.route('/')
 def renderMain():
-    return render_template('home.html')
     session.clear()
+    return render_template('home.html')
+    
 @app.route('/startOver')
 def startOver():
     #TODO: delete everything from the session
@@ -29,7 +30,7 @@ def renderPage1():
 def renderPage2():      # get to use to send error
     #TODO: set the first and last name in the session
     session["firstName"] =request.form["firstName"] # adds the first name to cookie
-    session["lasttName"] =request.form["lastName"] # adds the last name to cookie
+    session["lastName"] =request.form["lastName"] # adds the last name to cookie
     return render_template('page2.html')
 
 @app.route('/page3',methods=['GET','POST'])
